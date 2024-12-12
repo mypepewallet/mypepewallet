@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "MyPepe - Pepecoin Wallet",
+  "version": "1.0.0",
+  "description": "Pepecoin wallet for Chrome browser",
+  "permissions": ["storage", "tabs", "notifications", "offscreen"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "scripts/background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "assets/pepecoin-logo-300.png",
+    "32": "assets/pepecoin-logo-300.png",
+    "48": "assets/pepecoin-logo-300.png",
+    "128": "assets/pepecoin-logo-300.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/contentScript.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "scripts/inject-script.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "action": {
+    "default_title": "MyPepe",
+    "default_popup": "index.html"
+  }
+}
